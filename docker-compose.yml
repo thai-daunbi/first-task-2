@@ -44,3 +44,15 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
   cache:
     image: memcached:1.6-alpine
+  pma-leothai:
+    image: phpmyadmin:latest
+    container_name: pma-leothai
+    restart: unless-stopped
+    tty: true
+    environment:
+      # PMA_ARBITRARY: 1
+      PMA_HOST: db
+    ports:
+      - "8091:80"
+    links:
+      - db
