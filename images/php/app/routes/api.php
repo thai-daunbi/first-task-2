@@ -1,7 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-echo "api.php";
-Route::middleware('api')->group(function () {
-    Route::get('/getUser/{id}', [UserController::class, 'getUser']);
-});
+
+Route::get('/getUser/{id}', [UserController::class, 'getUser']);
