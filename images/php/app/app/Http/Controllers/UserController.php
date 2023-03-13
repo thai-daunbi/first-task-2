@@ -8,15 +8,17 @@ class UserController extends Controller
 {
     public function show($id)
     {
-        if ($id == 1) {
-            return response()->json([
-                'id' => 1,
-                'name' => 'leo',
-                'cityName' => 'seoul',
-                'Email' => 'leo@mail.com',
-            ]);
-        } else {
+        $user = User::with('city')->find($id); // $id에 해당하는 모델 인스턴스를 조회합니다.
+
+        if (!$user) {
             return response()->json(['message' => 'User not found.'], 404);
         }
+
+        return response()->json([
+            'id' => $user->id,
+            'name' => $user->name,
+            'cityName' => $user->city->name,
+            'Email' => $user->email,
+        ]);
     }
 }

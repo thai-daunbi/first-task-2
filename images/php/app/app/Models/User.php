@@ -19,8 +19,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email',
+        'name', 'email', 'city_id',
     ];
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
 
     /**
      * The attributes excluded from the model's JSON form.
