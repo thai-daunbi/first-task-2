@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 $router->group(['prefix' => 'api/'], function () use ($router) {
     $router->get('getUser', 'UserController@index');
-    $router->post('getUser', 'UserController@store');
+    $router->post('user', 'UserController@store');
     $router->get('getUser/{id}', 'UserController@show');
     $router->patch('getUser/{id}', 'UserController@update');
     $router->delete('getUser/{id}', 'UserController@destroy');

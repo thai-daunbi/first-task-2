@@ -21,4 +21,12 @@ class UserController extends Controller
             'Email' => $user->email,
         ]);
     }
+    
+    public function store(Request $request){
+   
+        $user = User::create($request->all());
+   
+        return response()->json($user);
+   
+    }
 }
