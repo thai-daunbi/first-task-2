@@ -1,13 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-echo "web.php"; exit;
 use Illuminate\Http\Request;
 use App\Models\User;
 
 class UserController extends Controller
 {
-    public function getUser($id)
+    public function show($id)
     {
         if ($id == 1) {
             return response()->json([

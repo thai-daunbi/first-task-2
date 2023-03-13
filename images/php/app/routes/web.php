@@ -13,8 +13,33 @@ use Illuminate\Support\Facades\Route;
 | and give it the Closure to call when that URI is requested.
 |
 */
-echo "web.php";
 Route::get('/', function () {
     return app()->version();
 });
+
+// web.php
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+
+$router->group(['prefix' => 'api/'], function () use ($router) {
+    $router->get('getUser', 'UserController@index');
+    $router->post('getUser', 'UserController@store');
+    $router->get('getUser/{id}', 'UserController@show');
+    $router->patch('getUser/{id}', 'UserController@update');
+    $router->delete('getUser/{id}', 'UserController@destroy');
+});
+
+// Route::group(['prefix' => 'api'], function () {
+//     // api.php 파일의 모든 라우트를 추가합니다.
+//     require base_path('routes/api.php');
+// });
+
+// // 나머지 웹 애플리케이션 라우트를 추가합니다.
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 
